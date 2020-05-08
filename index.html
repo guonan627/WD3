@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="./css.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./script.js" defer></script>
+    <script>
+      $(document).ready(function () {
+        $(":button").click(function () {
+          $("#error0").show().text("Please fix!").delay(2000).fadeOut(2000);
+        });
+      });
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+    />
+  </head>
+
+  <body>
+    <!-- <input type="checkbox" id="theme" value="Turn Off Light" /> -->
+    <header>
+      <h1>Registration Form</h1>
+    </header>
+
+    <fieldset>
+      <form>
+        <legend>Account Details</legend>
+        <div class="field">
+          <label for="sn">Surname</label>
+          <input
+            id="sn"
+            type="text"
+            title="surname"
+            pattern="(?!.*fuck)[A-Za-z]{3,128}"
+            name="surname"
+            placeholder="Your surname..."
+            required
+          />
+          <div class="icon"><i class="fas fa-user"></i></div>
+          <div class="error" id="errorsn">Please enter a valid Surname</div>
+        </div>
+
+        <div class="field">
+          <label for="fn">First Name</label>
+          <input
+            id="fn"
+            type="text"
+            title="first name"
+            pattern="(?!.*fuck)[A-Za-z]{3,128}"
+            name="first name"
+            placeholder="Your first name..."
+            required
+          />
+          <div class="icon"><i class="fas fa-user" id="usericon"></i></div>
+          <div class="error" id="errorfn">Please enter a valid first name</div>
+        </div>
+
+        <div class="field" id="gender">
+          <label>Gender</label>
+          <div class="gender">
+            <input type="radio" id="male" name="gender" value="male" />
+            <label for="male">Male</label>
+          </div>
+          <div class="gender">
+            <input type="radio" id="female" name="gender" value="female" />
+            <label for="female">Female</label>
+          </div>
+          <div class="gender">
+            <input type="radio" id="other" name="gender" value="other" />
+            <label for="other">Other</label>
+          </div>
+          <div class="error" id="errorgender"></div>
+          <button onclick="validateGender()">Validate Gender</button>
+        </div>
+
+        <div class="field">
+          <label for="tt">Title</label>
+          <select id="tt" name="title" required>
+            <option></option>
+            <option value="mr">Mr</option>
+            <option value="mrs">Mrs</option>
+            <option value="miss">Miss</option>
+            <option value="ms">Ms</option>
+            <option value="dr">Dr</option>
+          </select>
+          <div class="error" id="errortt">Please enter a valid title</div>
+        </div>
+
+        <div class="field">
+          <label for="dob">Date of Birth</label>
+          <input
+            id="dob"
+            type="date"
+            title="date of birth"
+            name="date of birth"
+            max="2020-05-01"
+            min="1920-05-01"
+            placeholder="Your date of birth..."
+            required
+          />
+          <div class="icon"><i class="fas fa-birthday-cake"></i></div>
+          <div class="error" id="errordob">
+            Please input a valid data of birth
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input
+            class="em"
+            id="em"
+            type="email"
+            pattern="a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="email"
+            name="email"
+            placeholder="Your email..."
+            required
+          />
+          <div class="icon"><i class="fas fa-envelope-square"></i></div>
+          <div class="error" id="errorem">Please enter a valid Email</div>
+        </div>
+
+        <div class="field" id="password1">
+          <div>
+            <label for="psw1">Password</label>
+            <button
+              onclick="revealPasswords()"
+              type="button"
+              id="revealpass"
+              name="revealpass"
+            >
+              <i class="fas fa-eye" id="eye"></i>
+            </button>
+          </div>
+          <input
+            type="password"
+            name="password_one"
+            id="psw1"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            minlength="8"
+            placeholder="Set up password..."
+            onblur="passEquality()"
+            required
+          />
+          <div class="icon"><i class="fas fa-key"></i></div>
+          <div class="error" id="errorpsw1">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">
+              A <b>capital (uppercase)</b> letter
+            </p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
+        </div>
+
+        <div class="field" id="password2">
+          <div>
+            <label for="psw2">Password Again</label>
+            <button
+              onclick="revealPasswords()"
+              type="button"
+              id="revealpass"
+              name="revealpass"
+            >
+              <i class="fas fa-eye" id="eye"></i>
+            </button>
+          </div>
+          <input
+            type="password"
+            name="password_two"
+            id="psw2"
+            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            minlength="8"
+            placeholder="Password again..."
+            onblur="passEquality()"
+            required
+          />
+          <div class="icon"><i class="fas fa-key"></i></div>
+          <div class="error" id="errorpsw2">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">
+              A <b>capital (uppercase)</b> letter
+            </p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="ad">Address</label>
+          <input
+            type="text"
+            id="ad"
+            pattern="(?!.*fuck)[a-zA-Z0-9,.\s]{5,200}"
+            title="address"
+            name="address"
+            placeholder="Your address..."
+            required
+          />
+          <div class="icon"><i class="fas fa-home"></i></div>
+          <div class="error" id="errorad">Please enter a valid address</div>
+        </div>
+
+        <div class="field">
+          <label for="sb">Suburb</label>
+          <input
+            id="sb"
+            type="text"
+            pattern="(?!.*fuck)[a-zA-Z0-9,.\s]{3,30}"
+            title="suburb"
+            name="suburb"
+            placeholder="Your suburb..."
+            required
+          />
+          <div class="icon"><i class="fas fa-location-arrow"></i></div>
+          <div class="error" id="errorsb">Please enter a valid suburb</div>
+        </div>
+
+        <div class="field">
+          <label for="st">State</label>
+          <select id="st" name="state" required>
+            <option></option>
+            <option value="QLD">QLD</option>
+            <option value="VIC">VIC</option>
+            <option value="NSW">NSW</option>
+            <option value="WA">WA</option>
+            <option value="SA">SA</option>
+            <option value="TAS">TAS</option>
+            <option value="NT">NT</option>
+            <option value="ACT">ACT</option>
+          </select>
+          <div class="error" id="errorst">Please select a suburb</div>
+        </div>
+
+        <div class="field">
+          <label for="pc">Postcode</label>
+          <input
+            id="pc"
+            type="text"
+            title="postcode"
+            pattern="[0-9]{4}"
+            maxlength="4"
+            name="postcode"
+            placeholder="Your postcode..."
+            required
+          />
+          <div class="icon"><i class="fas fa-truck"></i></div>
+          <div class="error" id="errorpc">Please enter a valid postcode</div>
+        </div>
+
+        <div class="field">
+          <label for="p1">Phone (After Hours)</label>
+          <input
+            id="p1"
+            type="tel"
+            pattern="[0-9]+{6,20}"
+            minlength="6"
+            maxlength="20"
+            title="phone"
+            name="phone after hours"
+            placeholder="Your phone after business hours..."
+          />
+          <div class="icon"><i class="fas fa-phone"></i></div>
+          <div class="error" id="errorp1">Please enter a valid phone</div>
+        </div>
+
+        <div class="field">
+          <label for="p2">Phone (Bussiness Hours)</label>
+          <input
+            id="p2"
+            type="tel"
+            pattern="[0-9]+{6,20}"
+            minlength="6"
+            maxlength="20"
+            title="phone"
+            name="phone in business hours"
+            placeholder="Your phone in business hours..."
+          />
+          <div class="icon"><i class="fas fa-phone"></i></div>
+          <div class="error" id="errorp2">Please enter a valid phone</div>
+        </div>
+
+        <br />
+        <div class="field">
+          <input
+            type="button"
+            id="checkbutton"
+            value="Check"
+            onclick="validity()"
+          />
+        </div>
+        <br />
+
+        <div class="field" id="terms">
+          <input id="checkit" type="checkbox" />
+          <a href="#" onclick="createModal()">Agree to terms and conditions</a>
+          <div id="tint" onclick="destoryModal()" hidden></div>
+          <div id="modal" hidden>
+            <a herf="#" onclick="destoryModal()">X</a>
+            <p>abcdefg</p>
+            <p>abcdefghijk</p>
+            <buttom type="buttom" onclick="enableCheckbox()">Agree</buttom>
+            <buttom type="buttom" onclick="disableCheckbox()">Decline</buttom>
+          </div>
+        </div>
+
+        <div class="field">
+          <input
+            id="submitme"
+            type="submit"
+            value="Submit"
+            onclick="validateForm()"
+            disabled
+          />
+        </div>
+
+        <div id="error0"></div>
+      </form>
+    </fieldset>
+    <footer>
+      <strong>The website is designed by Nan Guo in May 2020</strong>
+    </footer>
+  </body>
+</html>
+
+<!-- "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" -->

@@ -1,0 +1,325 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial;
+  font-size: 18px; /* equal to 100% or 1em*/
+}
+
+body {
+  width: 90%;
+  position: relative;
+  margin: auto;
+}
+
+header {
+  width: 100%;
+  background: blue;
+  min-height: 5em;
+  text-align: center;
+  border: 2px solid blue;
+  border-radius: 2px;
+  padding: auto;
+  margin-bottom: 30px;
+  color: white;
+}
+
+legend {
+  font-size: 1.6em;
+}
+
+fieldset {
+  width: 100%;
+  border: 1px solid blue;
+  border-radius: 10px;
+  background-color: lightblue;
+  padding: 20px;
+}
+
+.field {
+  width: 100%;
+  position: relative;
+  margin-left: 50px;
+}
+label {
+  float: left;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+}
+
+input {
+  font-size: 1em;
+  float: left;
+  width: 80%;
+  padding: 12px 0;
+  margin: 8px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: white;
+}
+
+input:valid,
+select:valid {
+  border: 2px solid green;
+}
+
+input:invalid,
+select:invalid {
+  border: 2px solid red;
+}
+
+.icon {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "";
+  color: grey;
+  position: relative;
+  right: 60px;
+  top: 25px;
+  padding: 9px 8px;
+}
+
+#gender {
+  width: 100%;
+  position: relative;
+  margin-left: 50px;
+  display: flex;
+  justify-content: flex-start;
+}
+.gender {
+  float: left;
+  width: 100%;
+}
+.gender input {
+  width: 100%;
+}
+.gender label {
+  width: 100%;
+}
+select {
+  font-size: 1em;
+  float: left;
+  width: 150px;
+  padding: 12px 0;
+  margin: 8px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: left;
+  background-color: white;
+}
+#password1 div:first-child {
+  float: left;
+  width: 100%;
+  margin: 8px 0;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+#password1 div:first-child label {
+  float: left;
+  width: 10%;
+}
+#password1 div:first-child button {
+  background-color: lightblue;
+  border: 1px solid lightblue;
+  float: left;
+  width: 2%;
+}
+#password2 div:first-child {
+  float: left;
+  width: 100%;
+  margin: 8px 0;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+#password2 div:first-child label {
+  float: left;
+  width: 15%;
+}
+#password2 div:first-child button {
+  background-color: lightblue;
+  border: 1px solid lightblue;
+  float: left;
+  width: 2%;
+}
+.error {
+  display: none;
+  width: 100%;
+  float: left;
+  padding-left: 2%;
+  font-size: 0.8em;
+  color: red;
+  margin: 20px 0;
+}
+
+input:focus,
+select:focus {
+  background-color: rgb(255, 255, 218);
+}
+
+input[type="button"],
+input[type="submit"] {
+  width: 100px;
+  float: left;
+  background-color: blue;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background-color: lightblue;
+}
+input[type="submit"]:disabled {
+  background-color: grey;
+  cursor: unset;
+}
+#terms {
+  width: 100%;
+  margin-top: 20px;
+  margin-left: 50px;
+  display: flex;
+  justify-content: flex-start;
+}
+#terms label {
+  width: 30%;
+  font-size: 20px;
+  color: blue;
+}
+#checkit {
+  float: left;
+  width: 10%;
+  height: 30px;
+  margin-top: 15px;
+}
+#tint {
+  background-color: burlywood;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#modal {
+  background-color: cyan;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5em;
+}
+#modal a {
+  display: flex;
+  flex-direction: row-reverse;
+}
+#submitme {
+  width: 100px;
+  float: left;
+  padding: 12px 20px;
+  margin: 20px 500px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#error0 {
+  position: fixed;
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  min-height: 130px;
+  padding: 50px;
+  text-align: center;
+  font-size: 1.5em;
+  color: red;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 218);
+  display: none;
+}
+
+.field:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+footer {
+  width: 100%;
+  background: blue;
+  min-height: 4em;
+  font-size: 1em;
+  text-align: center;
+  border: 2px solid white;
+  padding: auto;
+  margin-top: 30px;
+  border-radius: 2px;
+  color: black;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    width: 100%;
+  }
+  label {
+    width: 100%;
+    text-align: left;
+  }
+  input {
+    width: 100%;
+  }
+  .error {
+    width: 100%;
+  }
+}
+
+/* ===========================
+    Turn Off Light
+===========================*/
+/* #theme {
+  position: fixed;
+  top: 0;
+  left: 0;
+  float: left;
+  width: 80px;
+  height: 80px;
+  opacity: 1;
+}
+
+#theme::before {
+  content: "Turn Off Light";
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#theme:checked ~ * {
+  background: rgb(50, 50, 50);
+  color: grey;
+}
+
+#theme:checked ~ fieldset input {
+  background: darkgray;
+}
+
+#theme:checked ~ fieldset select {
+  background: darkgray;
+}
+
+#theme:checked ~ fieldset label {
+  color: white;
+} */
